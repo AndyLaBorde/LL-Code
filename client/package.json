@@ -14,8 +14,11 @@
     "@babel/runtime": "^7.15.3",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "favicons": "^7.0.2",
+    "favicons-webpack-plugin": "^6.0.0",
     "html-webpack-plugin": "^5.3.2",
-    "http-server": "^0.11.1",
+    "http-server": "^14.1.1",
+    "mini-css-extract-plugin": "^2.4.5",
     "style-loader": "^3.2.1",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
@@ -26,5 +29,7 @@
   "dependencies": {
     "code-mirror-themes": "^1.0.0",
     "idb": "^6.1.2"
-  }
+  },
+  "version": "1.0.0",
+  "main": "sw.js"
 }
