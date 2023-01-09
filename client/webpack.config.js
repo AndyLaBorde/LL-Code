@@ -24,9 +24,10 @@ module.exports = () => {
       title: 'Webpack Plugin',
     }),
     new InjectManifest({
-      swSrc: './src/sw.js',
+      swSrc: './sw.js',
       swDest: 'service-worker.js',
     }),
+
     new MiniCssExtractPlugin(),
     new WebpackPwaManifest({
     name: 'LL-Code',
@@ -34,14 +35,14 @@ module.exports = () => {
     description: 'Laborde Laboratories first ever text editor application!!',
     background_color: '#ffffff',
     crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+    start_url: "./",
+    publicPath: "./",
     icons: [
       {
-        src: path.resolve('client/favicon.ico'),
-        sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
-      },
-      {
-        src: path.resolve('client/src/images/logo.png'),
-        size: '1024x1024' // you can also use the specifications pattern
+        // small icon
+        src: path.resolve('src/images/logo.png'),
+        sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+        destination: path.join("assets", "icons"),
       }
     ]
   }),
@@ -52,6 +53,10 @@ module.exports = () => {
         {
         test: /.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: "asset/icons",
         },
         {
           test: /.m?js$/,
