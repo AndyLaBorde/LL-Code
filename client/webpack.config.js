@@ -31,7 +31,6 @@ module.exports = () => {
     short_name: 'J.A.T.E.',
     description: 'Javascript text editor application!!',
     background_color: '#ffffff',
-    crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
     start_url: "/",
     publicPath: "/",
     icons: [
@@ -40,6 +39,7 @@ module.exports = () => {
         src: path.resolve('src/images/logo.png'),
         sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
         destination: path.join("assets", "icons"),
+        purpose: "maskable",
       }
     ]
   }),

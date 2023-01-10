@@ -39,7 +39,7 @@ export const getDb = async () => {
   // Open up the desired object store.
   const store = tx.objectStore('jate');
   // Use the .getAll() method to get all data in the database.
-  const request = store.pull({ id: 1, value: content });
+  const request = store.getAll();
   const result = await request;
   console.log(`Data from database is ${JSON.stringify(result)}`);
   return result.value;
