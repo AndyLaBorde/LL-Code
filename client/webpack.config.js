@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
@@ -21,28 +20,26 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
       template: './index.html',
-      title: 'Webpack Plugin',
+      title: 'J.A.T.E.',
     }),
     new InjectManifest({
       swSrc: './sw.js',
-      swDest: 'service-worker.js',
+      swDest: '/service-worker.js',
     }),
-
-    new MiniCssExtractPlugin(),
     new WebpackPwaManifest({
-    name: 'LL-Code',
-    short_name: 'MyPWA',
-    description: 'Laborde Laboratories first ever text editor application!!',
+    name: 'Just Another Text Editor',
+    short_name: 'J.A.T.E.',
+    description: 'Javascript text editor application!!',
     background_color: '#ffffff',
-    crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
-    start_url: "./",
-    publicPath: "./",
+    start_url: "/",
+    publicPath: "/",
     icons: [
       {
         // small icon
         src: path.resolve('src/images/logo.png'),
         sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
         destination: path.join("assets", "icons"),
+        purpose: "maskable",
       }
     ]
   }),
@@ -52,7 +49,7 @@ module.exports = () => {
       rules: [
         {
         test: /.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
